@@ -1,38 +1,28 @@
-//Package info
 package com.irrelevantknight.printcoords;
 
-//Imports
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-//Start class
-public class CommandListener implements CommandExecutor
-{
+public class CommandListener implements CommandExecutor {
+	
 	//On command run
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
-	{
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		//If the command was /coords
-		if(label.equalsIgnoreCase("coords"))
-		{
+		if(label.equalsIgnoreCase("coords")) {
 			//If the command was sent by the console
-			if(!(sender instanceof Player))
-			{
+			if(!(sender instanceof Player)) {
 				sender.sendMessage("This command can only be run by a player.");
 				
 				return true;
 			}
 			//If the command was sent by the player
-			else
-			{
-				//Get the player who sent the command
+			else {
 				final Player player = (Player)sender;
 				
-				//Check permission
-				if(player.hasPermission("printcoords.coords"))
-				{
+				if(player.hasPermission("printcoords.coords")) {
 					//Get the player's location
 					final Location location = player.getLocation();
 
@@ -51,11 +41,9 @@ public class CommandListener implements CommandExecutor
 					
 					return true;
 				}
-				
 				return true;
 			}
 		}
-		
 		return false;
 	}
 	
